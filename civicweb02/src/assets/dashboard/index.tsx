@@ -13,6 +13,14 @@ import hamburger from "./burgermenu.png";
 import flag from "./flag.png";
 import resolved_report from "./resolved-reports.png";
 import submitted_reports from "./submitted-reports.png";
+import waccount from "./account-white.svg";
+import wdashboard from "./dashboard-white.svg";
+import wofficials from "./official-white.svg";
+import wnewreport from "./newreport-white.svg";
+import wfind from "./find-white.svg";
+import whelp from "./help-white.svg";
+import wvolunteer from "./volunteer-white.svg";
+import wclose from "./close-white.svg";
 
 // Import all images from the assets folder
 
@@ -33,6 +41,14 @@ const images = {
   flag,
   resolved_report,
   submitted_reports,
+  waccount,
+  wdashboard,
+  wofficials,
+  wnewreport,
+  wfind,
+  whelp,
+  wvolunteer,
+  wclose,
 };
 
 export default images;

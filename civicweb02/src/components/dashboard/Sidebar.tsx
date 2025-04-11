@@ -78,10 +78,47 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
 
       {/* Mobile sidebar */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 bg-black bg-opacity-50 md:hidden">
-          <div className="w-64 bg-white h-full p-4">
-            <button onClick={() => setIsOpen(false)}>Close</button>
+        <div className="fixed inset-0 z-50 bg-[#003D1F] bg-opacity-50 md:hidden">
+          <div className="p-4 flex flex-col items-start px-16 mt-20">
+            <div className="w-full flex items-center justify-between">
+              <img src={Logo} className="w-28" alt="CivicLink Logo" />
+              <button onClick={() => setIsOpen(false)}>
+                {" "}
+                <img src={images.wclose} alt="close button" />{" "}
+              </button>
+            </div>
+
             {/* Sidebar content */}
+            <div className="flex flex-col justify-evenly items-start gap-10 py-12">
+              <Link to="" className="flex gap-6 items-center justify-center">
+                <img src={images.waccount} alt="account icon" />
+                <p className="text-white reg-text">Account</p>
+              </Link>
+              <Link to="" className="flex gap-6 items-center justify-center">
+                <img src={images.wdashboard} alt="dashboard icon" />
+                <p className="text-white reg-text">Dashboard</p>
+              </Link>
+              <Link to="" className="flex gap-6 items-center justify-center">
+                <img src={images.wofficials} alt="officials icon" />
+                <p className="text-white reg-text">Officials</p>
+              </Link>
+              <Link to="" className="flex gap-6 items-center justify-center">
+                <img src={images.wnewreport} alt="report icon" />
+                <p className="text-white reg-text">New Report</p>
+              </Link>
+              <Link to="" className="flex gap-6 items-center justify-center">
+                <img src={images.wfind} alt="find icon" />
+                <p className="text-white reg-text">Find</p>
+              </Link>
+              <Link to="" className="flex gap-6 items-center justify-center">
+                <img src={images.wvolunteer} alt="volunteer icon" />
+                <p className="text-white reg-text">Volunteer</p>
+              </Link>
+              <Link to="" className="flex gap-6 items-center justify-center">
+                <img src={images.whelp} alt="help icon" />
+                <p className="text-white reg-text">Help Center</p>
+              </Link>
+            </div>
           </div>
         </div>
       )}
