@@ -4,7 +4,7 @@ import SignUpPage from "./pages/Signup";
 import SignInPage from "./pages/Signin";
 import LearnMore from "@/pages/LearnMore";
 import Layout from "@/components/shared/layout";
-import DashboardLayout from "./components/dashboard/layout";
+import DashboardLayout from "./components/dashboard/Dashboard_Layout";
 import Dashboard from "./pages/Dashboard";
 
 const App = () => {
