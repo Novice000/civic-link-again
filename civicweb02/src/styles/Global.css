@@ -1,0 +1,17 @@
+/* styles/global.css */
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  /* background-color: #003c2d; */
+  /** dark green background **/
+}
+
+.app-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
