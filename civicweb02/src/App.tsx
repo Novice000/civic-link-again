@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/Home";
-import SignUpPage from "./pages/Signup";
-import SignInPage from "./pages/Signin";
+import AuthPage from "./pages/AuthPage";
 import LearnMore from "@/pages/LearnMore";
 import Layout from "@/components/shared/layout";
 import DashboardLayout from "./components/dashboard/Dashboard_Layout";
 import Dashboard from "./pages/Dashboard";
+import FindYourRep from "./pages/FindYourRep";
 
 const App = () => {
   return (
@@ -15,10 +15,10 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/learn-more" element={<LearnMore />} />
         </Route>
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/signin" element={<SignInPage />} />
+        <Route path="/authpage" element={<AuthPage />} />
         <Route path="" element={<DashboardLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/find-your-rep" element={<FindYourRep />} />
         </Route>
       </Routes>
     </BrowserRouter>

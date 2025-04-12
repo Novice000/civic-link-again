@@ -2,6 +2,8 @@ import Logo from "../../assets/logo.png";
 import images from "../../assets/dashboard";
 import { Link } from "react-router-dom";
 import "../../styles/Dashboard.css";
+// import { useNavigate } from "react-router-dom";
+
 
 interface SidebarProps {
   isOpen: boolean;
@@ -9,6 +11,7 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
+  // const navigate = useNavigate();
   return (
     <>
       {/* Desktop sidebar */}
@@ -28,7 +31,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
             <p className="text-white reg-text">Account</p>
           </Link>
           <Link
-            to=""
+            to="/dashboard"
             className="flex flex-col gap-2 items-center justify-center"
           >
             <img
@@ -53,7 +56,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
             <p className="text-white reg-text">New Report</p>
           </Link>
           <Link
-            to=""
+            to="/find-your-rep"
+            // onClick={() => {
+            //   navigate("/learn-more");
+            // }}
             className="flex flex-col gap-2 items-center justify-center"
           >
             <img src={images.find} alt="find icon" />
@@ -94,7 +100,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
                 <img src={images.waccount} alt="account icon" />
                 <p className="text-white reg-text">Account</p>
               </Link>
-              <Link to="" className="flex gap-6 items-center justify-center">
+              <Link to="/dashboard" className="flex gap-6 items-center justify-center">
                 <img src={images.wdashboard} alt="dashboard icon" />
                 <p className="text-white reg-text">Dashboard</p>
               </Link>
@@ -106,7 +112,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
                 <img src={images.wnewreport} alt="report icon" />
                 <p className="text-white reg-text">New Report</p>
               </Link>
-              <Link to="" className="flex gap-6 items-center justify-center">
+              <Link to="/find-your-rep" className="flex gap-6 items-center justify-center">
                 <img src={images.wfind} alt="find icon" />
                 <p className="text-white reg-text">Find</p>
               </Link>

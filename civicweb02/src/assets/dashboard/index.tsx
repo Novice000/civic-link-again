@@ -21,6 +21,7 @@ import wfind from "./find-white.svg";
 import whelp from "./help-white.svg";
 import wvolunteer from "./volunteer-white.svg";
 import wclose from "./close-white.svg";
+import flaggy from "./flaggy.png";
 
 // Import all images from the assets folder
 
@@ -39,6 +40,7 @@ const images = {
   arrow_down,
   hamburger,
   flag,
+  flaggy,
   resolved_report,
   submitted_reports,
   waccount,
