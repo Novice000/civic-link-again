@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"; // to get the URL parameter
-import axios from "axios"; // For making API requests
+import instance from "../axios";
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
 import Topbar from "../components/dashboard/topbar";
+import CivicLoader from "../components/shared/loader";
 
 // Define TypeScript interfaces for official data
 interface Official {
@@ -26,7 +27,7 @@ const OfficialInformationPage = () => {
   useEffect(() => {
     const fetchOfficial = async () => {
       try {
-        const response = await axios.get(`/api/officials/${id}`);
+        const response = await instance.get(`/api/officials/${id}`);
         setOfficial(response.data.official); // Assuming the API response has `official` object
         console.log(response.data.official);
       } catch (error) {
@@ -38,7 +39,7 @@ const OfficialInformationPage = () => {
   }, [id]);
 
   if (!official) {
-    return <div>Loading...</div>; // Loading state until data is fetched
+    return <CivicLoader />; // Loading state until data is fetched
   }
 
   return (

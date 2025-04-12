@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import instance from "../axios";
 import { useNavigate } from "react-router-dom";
+import CivicLoader from "../components/shared/loader";
 
 // Define the type for an official
 interface Official {
@@ -27,7 +28,7 @@ const OfficialsPage = () => {
   useEffect(() => {
     const fetchLevels = async () => {
       try {
-        const res = await axios.get("/api/levels");
+        const res = await instance.get("/api/levels");
         const levelMap: Record<string, string> = {};
         res.data.levels.forEach((lvl: { level: string; _id: string }) => {
           levelMap[lvl.level.toLowerCase()] = lvl._id;
@@ -48,7 +49,7 @@ const OfficialsPage = () => {
 
       setLoading(true);
       try {
-        const res = await axios.get(
+        const res = await instance.get(
           `/api/officials/levels/${
             levels[activeTab.toLowerCase()]
           }?page=1&limit=40`
@@ -102,7 +103,7 @@ const OfficialsPage = () => {
 
       {/* Officials List */}
       {loading ? (
-        <p>Loading officials...</p>
+        <CivicLoader />
       ) : officials.length === 0 ? (
         <p>Coming Soon...</p>
       ) : (
