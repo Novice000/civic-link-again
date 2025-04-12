@@ -16,6 +16,13 @@ function HomePage() {
             Welcome to CivicLink! Find your representative or engage <br /> with
             government officials.
           </p>
+          {/* Button to got o sign up page */}
+          <Link to="/authpage">
+            <button className="bg-white text-[#003D25] border border-[#003D25] px-6 py-2 rounded hover:bg-[#003D25] hover:text-white transition cursor-pointer">
+              Sign Up
+            </button>
+          </Link>
+
           <button
             className="py-[12px] px-[20px] h-[50px] w-[328px] bg-home rounded-[8px] text-white"
             onClick={() => {
@@ -23,9 +30,6 @@ function HomePage() {
             }}
           >
             Learn More
-          </button>
-          <button className="py-[12px] px-[20px] h-[50px] w-[328px] bg-white border border-home rounded-[8px] text-home">
-            Connect with your CivicLink
           </button>
         </div>
       </section>

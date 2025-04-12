@@ -15,16 +15,16 @@ function Header() {
       <nav className="lg:flex hidden justify-between gap-[40px] items-center">
         <ul className="flex gap-[40px] font-[700] ">
           <li>
-            <Link to="#">Home</Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="#">About</Link>
+            <Link to="/learn-more">About</Link>
           </li>
           <li>
             <Link to="#">Services</Link>
           </li>
           <li>
-            <Link to="#">Officials</Link>
+            <Link to="/find-your-rep">Officials</Link>
           </li>
           <li>
             <Link to="#">Complaints</Link>

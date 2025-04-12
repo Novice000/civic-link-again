@@ -1,139 +1,87 @@
-import { federal, state, local } from "@/components/learn-more/data";
-import { Input } from "@/components/ui/input";
-import { SearchIcon } from "lucide-react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import GovernmentOfficialCard from "@/components/learn-more/government-official-card";
-
-const armColors: { [key: string]: string } = {
-  executive: "text-blue-500", // Slightly lighter blueFind
-  legislative: "text-green-500", // Slightly lighter green
-  judicial: "text-purple-500", // Slightly lighter purple
-};
 
 const LearnMore = () => {
   return (
-    <div className="py-16 px-8 md:px-16 lg:px-24">
-      {/* Hero Section */}
-      <section className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-          Discover Your Government
-        </h1>
-        <p className="text-lg md:text-xl lg:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto">
-          Explore the hierarchical structure and connect with officials
-          responsible for delivering essential services.
-        </p>
-        <Link
-          to="/authpage"
-          className="inline-flex items-center justify-center px-6 py-3 bg-home text-white rounded-md shadow-md hover:bg-home-dark transition-colors duration-300"
-        >
-          Sign In to Access More
+    <div className="px-16 py-10">
+      <motion.h1
+        className="text-3xl font-bold text-center mb-6"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        Learn More
+      </motion.h1>
+      <p className="text-center max-w-xl mx-auto mb-6">
+        Explore the hierarchical structure and officials responsible for various
+        services.
+      </p>
+      <div className="text-center mb-10">
+        <Link to="/authpage">
+          <button className="bg-green-900 text-white px-6 py-2 rounded hover:bg-green-800 transition cursor-pointer">
+            Sign-in
+          </button>
         </Link>
+      </div>
+      <div className="mb-10">
+        <input
+          type="text"
+          placeholder="Search for official"
+          className="border rounded px-4 py-2 w-full max-w-md mx-auto block"
+        />
+      </div>
+      <div className="bg-gray-100 h-64 flex items-center justify-center mb-10">
+        <p>
+          🗺️ Navigate through the levels of government to find the relevant
+          officials
+        </p>
+      </div>
+      <section className="mb-10">
+        <h2 className="text-2xl font-semibold mb-4">Federal Officials</h2>
+        <ul className="space-y-4">
+          {[
+            "President",
+            "Vice President",
+            "Ministers",
+            "Senators",
+            "House of Reps",
+          ].map((role) => (
+            <li key={role} className="border p-4 rounded shadow">
+              <strong>{role}</strong>
+              <br />
+              <span className="text-sm text-gray-700">Federal Level</span>
+            </li>
+          ))}
+        </ul>
       </section>
-
-      {/* Search and Map Section */}
-      <section className="relative border border-gray-200 rounded-lg overflow-hidden mb-12">
-        <div className="p-4 md:p-6 lg:p-8 flex items-center">
-          <Input
-            type="text"
-            placeholder="Search for official..."
-            className="w-full md:w-1/3 h-12 pr-10 focus:ring-green-300 rounded-md border-gray-300"
-          />
-          <SearchIcon className="absolute top-5 md:top-6 lg:top-7 right-4 md:right-6 lg:right-8 text-gray-500" />
-        </div>
-        <img src="map-loc.png" alt="Location Map" className="w-full" />
+      <section className="mb-10">
+        <h2 className="text-2xl font-semibold mb-4">State Officials</h2>
+        <ul className="space-y-4">
+          {[
+            "Governor",
+            "Deputy Governor",
+            "Commissioners",
+            "State Assembly Members",
+          ].map((role) => (
+            <li key={role} className="border p-4 rounded shadow">
+              <strong>{role}</strong>
+              <br />
+              <span className="text-sm text-gray-700">State Level</span>
+            </li>
+          ))}
+        </ul>
       </section>
-
-      {/* Officials Sections */}
-      <section className="space-y-12">
-        {/* Federal Section */}
-        <section className="bg-home p-6 md:p-8 lg:p-10 rounded-lg shadow-md">
-          <h2 className="text-3xl font-semibold text-center mb-6 text-white">
-            Federal Officials
-          </h2>
-          {Object.entries(federal).map(([arm, positions]) => (
-            <div key={arm} className="mb-8">
-              <h3
-                className={`text-xl font-semibold text-center mb-4 ${
-                  armColors[arm.toLowerCase()] || "text-black"
-                } text-white`}
-              >
-                {arm.charAt(0).toUpperCase() + arm.slice(1)} Arm
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {positions.map((position: any) => (
-                  <GovernmentOfficialCard
-                    key={position.title}
-                    title={position.title}
-                    description={position.description}
-                    duties={position.duties}
-                    arm={arm}
-                    level="federal"
-                  />
-                ))}
-              </div>
-            </div>
+      <section className="mb-10">
+        <h2 className="text-2xl font-semibold mb-4">Local Officials</h2>
+        <ul className="space-y-4">
+          {["Councilors", "LGA Chairman"].map((role) => (
+            <li key={role} className="border p-4 rounded shadow">
+              <strong>{role}</strong>
+              <br />
+              <span className="text-sm text-gray-700">Local Level</span>
+            </li>
           ))}
-        </section>
-
-        {/* State Section */}
-        <section className="p-6 md:p-8 lg:p-10 rounded-lg shadow-md">
-          <h2 className="text-3xl font-semibold text-center mb-6">
-            State Officials
-          </h2>
-          {Object.entries(state).map(([arm, positions]) => (
-            <div key={arm} className="mb-8">
-              <h3
-                className={`text-xl font-semibold text-center mb-4 ${
-                  armColors[arm.toLowerCase()] || "text-black"
-                }`}
-              >
-                {arm.charAt(0).toUpperCase() + arm.slice(1)} Arm
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {positions.map((position: any) => (
-                  <GovernmentOfficialCard
-                    key={position.title}
-                    title={position.title}
-                    description={position.description}
-                    duties={position.duties}
-                    arm={arm}
-                    level="state"
-                  />
-                ))}
-              </div>
-            </div>
-          ))}
-        </section>
-
-        {/* Local Section */}
-        <section className="bg-home p-6 md:p-8 lg:p-10 rounded-lg shadow-md">
-          <h2 className="text-3xl font-semibold text-center mb-6 text-white">
-            Local Officials
-          </h2>
-          {Object.entries(local).map(([arm, positions]) => (
-            <div key={arm} className="mb-8">
-              <h3
-                className={`text-xl font-semibold text-center mb-4 ${
-                  armColors[arm.toLowerCase()] || "text-black"
-                } text-white`}
-              >
-                {arm.charAt(0).toUpperCase() + arm.slice(1)} Arm
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {positions.map((position: any) => (
-                  <GovernmentOfficialCard
-                    key={position.title}
-                    title={position.title}
-                    description={position.description}
-                    duties={position.duties}
-                    arm={arm}
-                    level="local"
-                  />
-                ))}
-              </div>
-            </div>
-          ))}
-        </section>
+        </ul>
       </section>
     </div>
   );
