@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import GovernmentOfficialCard from "@/components/learn-more/government-official-card";
 
 const armColors: { [key: string]: string } = {
-  executive: "text-blue-500", // Slightly lighter blue
+  executive: "text-blue-500", // Slightly lighter blueFind
   legislative: "text-green-500", // Slightly lighter green
   judicial: "text-purple-500", // Slightly lighter purple
 };
@@ -23,7 +23,7 @@ const LearnMore = () => {
           responsible for delivering essential services.
         </p>
         <Link
-          to="/signin"
+          to="/authpage"
           className="inline-flex items-center justify-center px-6 py-3 bg-home text-white rounded-md shadow-md hover:bg-home-dark transition-colors duration-300"
         >
           Sign In to Access More
