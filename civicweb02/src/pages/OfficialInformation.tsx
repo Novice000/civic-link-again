@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"; // to get the URL parameter
 import axios from "axios"; // For making API requests
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
-import { FaLinkedin } from "react-icons/fa";
 import Topbar from "../components/dashboard/topbar";
 
 // Define TypeScript interfaces for official data
