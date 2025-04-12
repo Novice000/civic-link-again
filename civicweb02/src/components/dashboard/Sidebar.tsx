@@ -42,7 +42,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
             <p className="text-white reg-text">Dashboard</p>
           </Link>
           <Link
-            to=""
+            to="/officials-page"
             className="flex flex-col gap-2 items-center justify-center"
           >
             <img src={images.officials} alt="officials icon" />
