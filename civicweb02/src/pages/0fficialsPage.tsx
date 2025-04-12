@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 // Define the type for an official
 interface Official {
@@ -17,9 +18,10 @@ interface Official {
 
 const OfficialsPage = () => {
   const [activeTab, setActiveTab] = useState("Federal");
-  const [officials, setOfficials] = useState<Official[]>([]); // Explicitly type the officials state
+  const [officials, setOfficials] = useState<Official[]>([]);
   const [loading, setLoading] = useState(false);
   const [levels, setLevels] = useState<Record<string, string>>({});
+  const navigate = useNavigate();
 
   // Fetch levels once on mount
   useEffect(() => {
@@ -129,7 +131,10 @@ const OfficialsPage = () => {
                 </div>
               </div>
 
-              <button className="bg-green-900 text-white px-6 py-2 rounded text-sm hover:bg-green-800">
+              <button
+                onClick={() => navigate(`/officials/${official._id}`)}
+                className="bg-green-900 text-white px-6 py-2 rounded text-sm hover:bg-green-800 cursor-pointer"
+              >
                 View
               </button>
             </div>

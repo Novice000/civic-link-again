@@ -1,12 +1,54 @@
-import Topbar from "../components/dashboard/topbar";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom"; // to get the URL parameter
+import axios from "axios"; // For making API requests
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
 import { FaLinkedin } from "react-icons/fa";
+import Topbar from "../components/dashboard/topbar";
+
+// Define TypeScript interfaces for official data
+interface Official {
+  name: string;
+  title: string;
+  contact_info: {
+    email: string;
+    phone_number: string;
+  };
+  location: {
+    address: string;
+    state: string;
+  };
+  responsibility_area: string;
+}
 
 const OfficialInformationPage = () => {
+  const { id } = useParams<{ id: string }>(); // Get the ID from the URL
+  const [official, setOfficial] = useState<Official | null>(null);
+
+  useEffect(() => {
+    const fetchOfficial = async () => {
+      try {
+        const response = await axios.get(`/api/officials/${id}`);
+        setOfficial(response.data.official); // Assuming the API response has `official` object
+        console.log(response.data.official);
+      } catch (error) {
+        console.error("Error fetching official details:", error);
+      }
+    };
+
+    fetchOfficial();
+  }, [id]);
+
+  if (!official) {
+    return <div>Loading...</div>; // Loading state until data is fetched
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      {/* Topbar */}
-      <Topbar setIsSidebarOpen={(isOpen: boolean) => console.log("Sidebar open:", isOpen)} />
+      <Topbar
+        setIsSidebarOpen={(isOpen: boolean) =>
+          console.log("Sidebar open:", isOpen)
+        }
+      />
 
       {/* Breadcrumb */}
       <div className="hidden md:flex gap-2 text-gray-500 text-sm px-6 pt-6">
@@ -25,27 +67,27 @@ const OfficialInformationPage = () => {
         {/* Left Panel */}
         <div className="bg-[#003D1F] text-white rounded-lg py-6 px-4 w-full md:max-w-[250px] flex flex-col items-center gap-4">
           <img
-            src="/assets/official.png"
+            src="https://avatar.iran.liara.run/public"
             alt="Official"
-            className="w-32 h-40 object-cover rounded-md"
+            className=" h-40 object-cover rounded-md"
           />
-          <p className="font-semibold text-center">Dr. Adekunle Olayinka</p>
+          <p className="font-semibold text-center">{official.name}</p>
           <p className="text-sm bg-gray-500 px-2 py-1 rounded-md text-center">
-            Commissioner for Works, Lagos
+            {official.title}
           </p>
 
           <div className="text-left w-full mt-6 space-y-4 text-sm">
             <div>
               <p className="font-semibold">Level</p>
-              <p>State</p>
+              <p>{official.title}</p>
             </div>
             <div>
               <p className="font-semibold">Jurisdiction</p>
-              <p>Lagos State, Surulere LGA</p>
+              <p>{official.location.state}</p>
             </div>
             <div>
               <p className="font-semibold">Status</p>
-              <p>Verified</p>
+              <p>Active</p>
             </div>
           </div>
         </div>
@@ -65,7 +107,7 @@ const OfficialInformationPage = () => {
               </div>
               <div>
                 <p className="font-medium text-gray-500">Email</p>
-                <p className="text-green-900">aolayinka@lagosstate.gov.ng</p>
+                <p className="text-green-900">{official.contact_info.email}</p>
               </div>
             </div>
 
@@ -76,7 +118,9 @@ const OfficialInformationPage = () => {
               </div>
               <div>
                 <p className="font-medium text-gray-500">Phone</p>
-                <p className="text-green-900">01-4979030</p>
+                <p className="text-green-900">
+                  {official.contact_info.phone_number}
+                </p>
               </div>
             </div>
 
@@ -87,18 +131,7 @@ const OfficialInformationPage = () => {
               </div>
               <div>
                 <p className="font-medium text-gray-500">Office Address</p>
-                <p>Lagos State Secretariat in Alausa, Ikeja, Lagos.</p>
-              </div>
-            </div>
-
-            {/* Social Media */}
-            <div className="flex items-start gap-4 border-b pb-3">
-              <div className="text-xl text-gray-400 mt-1">
-                <FaLinkedin />
-              </div>
-              <div>
-                <p className="font-medium text-gray-500">Social Media</p>
-                <p className="text-green-900">Dr. Adekunle Olayinka, FNSE</p>
+                <p>{official.location.address}</p>
               </div>
             </div>
 
@@ -107,13 +140,7 @@ const OfficialInformationPage = () => {
               <div className="text-xl text-gray-400 mt-1">📋</div>
               <div>
                 <p className="font-medium text-gray-500">Responsibilities</p>
-                <p className="mt-1">
-                  Responsible for overseeing Lagos State’s infrastructure
-                  projects, advising the Governor on public works policy,
-                  monitoring project execution for quality and timeliness,
-                  engaging with communities and stakeholders, and promoting
-                  sustainable, innovative solutions for urban development.
-                </p>
+                <p className="mt-1">{official.responsibility_area}</p>
               </div>
             </div>
           </div>

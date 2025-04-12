@@ -6,7 +6,7 @@ import Layout from "@/components/shared/layout";
 import DashboardLayout from "./components/dashboard/Dashboard_Layout";
 import Dashboard from "./pages/Dashboard";
 import FindYourRep from "./pages/FindYourRep";
-import OfficialInformation  from "./pages/OfficialInformation";
+import OfficialInformation from "./pages/OfficialInformation";
 import OfficialsPage from "./pages/0fficialsPage";
 
 const App = () => {
@@ -21,7 +21,7 @@ const App = () => {
         <Route path="" element={<DashboardLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/find-your-rep" element={<FindYourRep />} />
-          <Route path="/official-information" element={<OfficialInformation />} />
+          <Route path="/officials/:id" element={<OfficialInformation />} />
           <Route path="/officials-page" element={<OfficialsPage />} />
         </Route>
       </Routes>

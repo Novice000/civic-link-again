@@ -15,7 +15,7 @@ const Dashboard: React.FC = () => {
     <>
       {/* Heading section */}
       <div className="flex items-center justify-between px-5 my-24">
-        <div className="hidden md:block">
+        <div className="hidden md:flex md:justify-between md:items-center md:w-full ">
           <div className="hidden md:block">
             <h1 className="text-[#484848] font-bold text-3xl">Dashboard</h1>
           </div>
